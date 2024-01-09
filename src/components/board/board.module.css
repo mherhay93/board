@@ -1,0 +1,7 @@
+.container {
+    background-image: url("../../assets/images/board.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width:calc(3620px / var(--scale));
+    height: calc(1830px / var(--scale));
+}
