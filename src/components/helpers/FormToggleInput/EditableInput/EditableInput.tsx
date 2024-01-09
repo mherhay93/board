@@ -8,10 +8,11 @@ interface IProps {
     onEdit: (v: boolean) => void
 }
 const EditableInput:FC<IProps> = ({value, labelName, onEdit}) => {
+    const unit = labelName !== 'Count' ? 'sm' : ''
     return (
         <div className={styles.container}>
-            <span>{labelName}</span>
-            <span>{value} sm</span>
+            <span className={styles.labelName}>{labelName}</span>
+            <span>{`${value} ${unit}`}</span>
             <img onClick={() => onEdit(true)} className={styles.icon} src={editIcon} alt='edit'/>
         </div>
     )

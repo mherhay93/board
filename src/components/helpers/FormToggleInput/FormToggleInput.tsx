@@ -4,21 +4,22 @@ import EditableInput from "./EditableInput/EditableInput";
 import styles from './formToggleInput.module.css'
 
 interface IProps {
-    isEdit: boolean,
     labelName: string,
-    value: string
+    value: string,
+    onChange: (v: string, k: string) => void,
 }
-const FormToggleInput:FC<IProps> = ({labelName, value}) => {
-    const [isEdit, setIsEdit] = useState<boolean>(false)
-    const handleEdit = (val:boolean) => {
-      setIsEdit(val)
-    }
 
-    return isEdit ?  (
+const FormToggleInput: FC<IProps> = ({labelName, value, onChange}) => {
+    const [isEdit, setIsEdit] = useState<boolean>(true)
+    const handleEdit = (val: boolean) => {
+        setIsEdit(val)
+    }
+    return  isEdit ? (
         <Input
             value={value}
             labelName={labelName}
             onConfirm={handleEdit}
+            onChange={onChange}
         />
     ) : (
         <EditableInput

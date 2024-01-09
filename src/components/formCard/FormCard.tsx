@@ -1,17 +1,32 @@
 import {FC} from "react";
+import {useDispatch} from "react-redux";
 import FormToggleInput from "../helpers/FormToggleInput/FormToggleInput";
+import {setSegment} from "../../redux/segments/segments";
+import {IValue} from "../../redux/types";
+import HeaderCard from "./HeaderCard";
 import styles from './formCard.module.css'
 
 interface IProps {
-    isEdit: boolean
+    item: IValue
 }
-const FormCard:FC<IProps> = () => {
+const FormCard:FC<IProps> = ({item}) => {
+    const {bgColor, id, length, count, width} = item
+    const dispatch = useDispatch()
+    const handleChange = (value:string, keyName: string) => {
+        if(value && !Number(value)) {
+            return
+        }
+        dispatch(setSegment({value, id, keyName}))
+    }
+    
     return (
         <div className={styles.container}>
-            <span className={styles.title}>Segment</span>
-            <FormToggleInput isEdit={true} labelName={'Length'} value={'0'}/>
-            <FormToggleInput isEdit={true} labelName={'Width'} value={'0'}/>
-            <FormToggleInput isEdit={true} labelName={'Count'} value={'0'}/>
+            <HeaderCard id={id}/>
+            <div  style={{background: bgColor}} className={styles.body}>
+                <FormToggleInput onChange={handleChange} labelName={'Width'} value={width}/>
+                <FormToggleInput onChange={handleChange} labelName={'Length'} value={length}/>
+                <FormToggleInput onChange={handleChange} labelName={'Count'} value={count}/>
+            </div>
         </div>
     )
 }

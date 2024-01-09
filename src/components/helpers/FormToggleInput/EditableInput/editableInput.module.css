@@ -9,3 +9,7 @@
     width: 22px;
     cursor: pointer;
 }
+
+.labelName {
+    font-weight: bold;
+}
