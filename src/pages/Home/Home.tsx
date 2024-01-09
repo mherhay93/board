@@ -6,10 +6,10 @@ import Layout from "../../components/layout/Layout";
 const Home = () => {
     return (
         <div className={styles.container}>
-            <Layout>
+            <Layout title={'Select segments'}>
                 <Menu/>
             </Layout>
-            <Layout>
+            <Layout title={'Board'}>
                 <Board/>
             </Layout>
         </div>

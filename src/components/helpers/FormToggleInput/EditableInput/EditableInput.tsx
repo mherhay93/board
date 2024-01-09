@@ -5,13 +5,14 @@ import styles from './editableInput.module.css'
 interface IProps {
     value:string;
     labelName: string;
+    onEdit: (v: boolean) => void
 }
-const EditableInput:FC<IProps> = ({value, labelName}) => {
+const EditableInput:FC<IProps> = ({value, labelName, onEdit}) => {
     return (
         <div className={styles.container}>
             <span>{labelName}</span>
             <span>{value} sm</span>
-            <img className={styles.icon} src={editIcon} alt='edit'/>
+            <img onClick={() => onEdit(true)} className={styles.icon} src={editIcon} alt='edit'/>
         </div>
     )
 }

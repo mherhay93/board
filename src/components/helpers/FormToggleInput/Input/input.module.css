@@ -1,5 +1,11 @@
 .container {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
+}
+
+.icon {
+    width: 22px;
+    cursor: pointer;
 }
